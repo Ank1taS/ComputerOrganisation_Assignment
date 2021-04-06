@@ -1,0 +1,24 @@
+
+;<Program title> To find the largest number in a series of number
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	LXI	H,	1000H
+	MOV	C,	M
+	INX	H
+	MOV	A,	M
+LEBEL2:	INX	H
+	CMP	M
+	JNC	LEBEL1
+	MOV	A,	M
+LEBEL1:	DCR	C
+	JNZ	LEBEL2
+	STA	1008H
+
+hlt

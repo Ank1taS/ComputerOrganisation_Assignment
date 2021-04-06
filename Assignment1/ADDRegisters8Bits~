@@ -1,0 +1,21 @@
+
+; <Program title> : to add 2 8-bit numbers present in 2 register
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	MVI		B,	200
+	MVI 	C,	100
+	MOV 	A,	B
+	
+	ADD		C		;[ac] <- [c] + [ac]
+	MOV		C,	A	; accumulator bits is stored in C register
+	MVI		A,	00
+	ADC		A		; only to add carry
+	MOV		B,	A	; accumulator bits is stored in B register with the addition of carry
+
+hlt

@@ -1,0 +1,23 @@
+
+;<Program title> To swap 2 8 bit memory
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	; Initially address 0002H stores 20
+	;	    address 0003H stores 10
+
+	LHLD	0002H ; H stores 10 and L stores 20
+
+	MOV	A,	H
+	MOV	H,	L
+	MOV	L,	A
+
+	SHLD	0002H ; H stores 20 and L stores 10
+
+hlt

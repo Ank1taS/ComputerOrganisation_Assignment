@@ -1,0 +1,22 @@
+
+;<Program title> to add 2 16 bit data present in 2 memory
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	; To store 300 - 44 is stored in 0001H and 1 is stored in 0002H 
+	; To store 260 - 4 is stored in 0004H and 1 is stored in 0005H
+ 	LHLD	0001H	;
+	XCHG		; E <=> L and D <=> H
+	LHLD	0004H	;
+
+	DAD D  		; [HL] = [HL] + [DE] 
+	
+	SHLD	0006H		
+	; result is stored in 0006H pair  
+	
+hlt

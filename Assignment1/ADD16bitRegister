@@ -1,0 +1,15 @@
+;<Program title> To add 2 16 bit numbers present in 2 registers
+
+jmp start
+
+;data
+
+;code
+start: nop
+	
+	LXI H, 300	; value stored in L register 
+	LXI B, 260	; value stored in L register
+	DAD B		; [HL] = [HL] + [BC]
+	; result 560 (230H) is stored in HL register
+	; 
+hlt

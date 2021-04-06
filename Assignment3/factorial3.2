@@ -1,0 +1,36 @@
+
+;<Program title> To find the factorial of a number
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	; Initial 1001H address stores the number
+	; result will be stored in 1002H
+
+	; Initially 5 is stored in 1001H
+	LDA	1001H		; value of 1001H ie 5 is stored in Accumulator
+	DCR	A		; value of Accumulator decresed by 1
+
+	LHLD	1001H		; L register stores value of 0001H addresss
+
+LOOP1:	MVI	E,	0H	
+		      	  	; H register stores value of 0002H addresss
+	XCHG	      	  	; D <= H, E <= L
+	MOV	C,	A	; accumulator value copied to c 
+
+LOOP2:	DAD	D	  	;[HL] = [HL] + [DE]
+	DCR	C	  	; C register value decresed by 1
+	JNZ	LOOP2	  	; jump to LOOP2 if ZERO flag == 0
+
+	SHLD	1001H 		;result stored in HL register pair copied to 1001H address
+	
+	DCR	A		; value of Accumulator decresed by 1
+	JNZ	LOOP1		; jump to LOOP1 if ZERO flag == 0
+
+	;Result is at 1002H address
+hlt

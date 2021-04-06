@@ -1,0 +1,26 @@
+
+;<Program title> :  to add 2 8-bits present in 2 memories
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	LXI	H,	0006H
+	MVI	M,	200
+	LXI	B,	0006H   ; address 0006H is copied to B
+
+	LXI	H,	000BH   ; register H-L stores new address 000BH
+	MVI	M,	100
+
+	LDAX	B      		; copies value, present the address that present in B
+	ADD	M		; M stores 100
+	
+	MOV	C,	A	;result copied to C
+	MVI	A,	00
+	ADC	A
+	MOV	B,	A
+	 
+hlt

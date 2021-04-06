@@ -1,0 +1,21 @@
+
+;<Program title> To multiply 2 8 bit numbers present in register and store result in register
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	MVI	C,	5 ; C register stores 5
+	MVI	E,	10; E register stores 10
+
+;	LXI	H,	0H; HL register pair initialised to 0
+START:	DAD	D	  ; [HL] = [HL] + [DE]
+	DCR	C	  ; C register value decremented by 1
+	JNZ	START	  ; jump to START if ZERO flag == 0
+
+	; result in [HL] pair
+hlt

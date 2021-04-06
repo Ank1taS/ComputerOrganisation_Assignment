@@ -1,0 +1,25 @@
+
+;<Program title>
+
+jmp start
+
+;data
+
+;code
+start: nop
+	MVI	C,	0  ; C is initialised to 0
+	MVI	H,	10 ; 20 is stored in B register
+	MVI	L,	20 ; 10 is stored in C register
+	MOV	A,	H  ; 20 is coppied to A
+
+	SUB	L	   ; result is in A
+	
+	JNC	STORE	   ; jump to STORE if carry flag C = 0
+	MVI	C,	1  ; 1 is stored in c
+STORE: 	LXI	H,	0005H; H stores 0005H address 
+	MOV	M,	A  ; result of A is copied to B register
+	INX	H	   ; H stores 0006H address
+	MOV	M,	C  ; carry stored in 0006H
+
+	; result is in 0005H and 0006H memory address
+hlt

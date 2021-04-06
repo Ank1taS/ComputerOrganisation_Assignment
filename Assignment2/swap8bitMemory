@@ -1,0 +1,26 @@
+
+;<Program title> swap 2 8 bit numbers present in memory using direct addressing
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	; Initially address 0002H stores 20
+	;	    address 0005H stores 10
+
+	LDA	0002H	; load accumulator
+	MOV	C,	A
+
+	LDA	0005H
+	STA	0002H
+
+	MOV	A,	c
+	STA	0005H
+	
+	; now after swap address 0002H stores 10
+	;     		 address 0005H stores 20
+
+hlt

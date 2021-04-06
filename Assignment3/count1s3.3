@@ -1,0 +1,22 @@
+
+;<Program title>To count numbers of 1 ina 8 bit number
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	MVI	B,	00H; B counts numbers of 1 in the 8 bit and initialised to 0
+	MVI	C,	08H; C counts remaining bits checked or numbers of rotation 
+	MVI	A,	05H; 5 is stored to check
+LABEL2:	RAR		   ; rotate right with carry bit
+	JNC	LABEL1	   ; jump to LABEL1 if carry flag == 0
+	INR	B	   ; increase B by 1
+LABEL1: DCR 	C	   ; decrease c by 1
+	JNZ	LABEL2	   ; jump to LEBEL2 if Zero flag == 0
+	MOV	A,	B  ; count of B is stored in A
+	; Result is stored in A
+hlt

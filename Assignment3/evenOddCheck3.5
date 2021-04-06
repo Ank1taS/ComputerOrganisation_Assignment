@@ -1,0 +1,20 @@
+
+;<Program title> To test a number is even or odd
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	MVI	A,	06; 06 is stored in accumulator
+	ANI	01	  ; logical AND operation on A and 01
+	JZ	LEBEL1	  ; Jump to LABEL1 if zero flag == 1
+	MVI	A,	01; 01 is stored in A that indiactes A have a odd number
+HLT		    	  ; program end!
+
+LEBEL1:	MVI	A,	02; 02 is stored in A that indiactes A have a EVEN number
+
+hlt

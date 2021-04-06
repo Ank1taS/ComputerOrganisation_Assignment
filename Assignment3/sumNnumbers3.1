@@ -1,0 +1,19 @@
+
+;<Program title> to find sum of 1st n natural number
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	;Initially 6 is stored in 0002H
+	LHLD	0002H	  ; 0002H memory's value 6 is stored in HL register
+	XCHG		  ; D <= H, E <= L
+
+START:	DAD	D	  ; [HL] <= [HL] + [DE]
+	DCR	E	  ; B -= 1
+	JNZ	START	  ; jump to START if zero flag == 0
+	; result is in HL register	
+hlt

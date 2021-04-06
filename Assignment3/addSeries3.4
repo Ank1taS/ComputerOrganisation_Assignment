@@ -1,0 +1,30 @@
+
+;<Program title>To find the sum of series of numbers
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+	; In this program 1000H address stores the size of array ie total numbers in the series
+	; 1001H, 1002H, 1003H, 1004H stores 5, 10, 5, 20 respectively
+ 
+
+	LXI	H,	1001H   ; HL register pair stores 1001H address value ie value
+	MOV	B,	H	; address of HL copied to BC register
+	MOV	C,	L
+	MVI	H,	00H
+	MVI	L,	00H
+
+LOOP:	LDAX	B		; value at the address of B is copied to A
+	MOV	E,	A	; value at A is copied to E
+	DAD	D		; HL += DE
+	LDA	1000H		; value at 0th index copied to A ie array size
+	DCR	A
+	STA	1000H
+	INX	B		; BC register points to next address
+	JNZ 	LOOP	
+	;result is at HL register pair
+hlt

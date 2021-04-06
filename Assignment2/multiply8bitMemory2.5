@@ -1,0 +1,28 @@
+
+;<Program title> To multiply 2 8 bit memory and store result in the memory 
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	; Initially 0001H address have value 5 
+	;  	    0002H address have value 10
+
+	LHLD	0001H 	  ; L register stores value 10 of 0001H addresss
+		      	  ; H register stores value 5 of 0002H addresss
+	XCHG	      	  ; D <= H, E <= L
+	MOV	C,	D ; C <= D
+	MVI	D,	0 ; D resgister stores 0
+	
+START:	DAD	D	  ;[HL] = [HL] + [DE]
+	DCR	C	  ; C register value decresed by 1
+	JNZ	START	  ; jump to START if ZERO flag == 0
+
+	;result is stored in HL register pair
+	SHLD	0005H
+	; result of HL register pair copied to 0006H and 0005H respectively
+hlt

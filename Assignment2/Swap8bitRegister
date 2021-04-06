@@ -1,0 +1,19 @@
+
+;<Program title> To swap 2 8 bit numbers using registers
+
+jmp start
+
+;data
+
+
+;code
+start: nop
+
+	MVI	B,	20; B stores 20
+	MVI	D,	10; D stores 10
+
+	MOV	H,	B
+	MOV	B,	D
+	MOV	D,	H
+	; now D stores 20 and B stores 10
+hlt
